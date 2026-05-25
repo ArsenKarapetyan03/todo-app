@@ -151,4 +151,4 @@ npm start
 
 ## Author
 
-Arsen Karapetyan# todo-app
+Arsen Karapetyan
