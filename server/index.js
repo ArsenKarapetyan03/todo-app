@@ -6,14 +6,19 @@ import todoRoutes from "./routes/todo.routes.js"
 const app = express()
 
 app.use(cors({
-  origin: true,
+  origin: [
+    "http://localhost:3000",
+    "https://ak-todo-app.vercel.app"
+  ],
   credentials: true
-}))
+}));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use('/auth',authRoutes)
 app.use('/todos',todoRoutes)
-
+app.get("/", (req, res) => {
+  res.send("API is running");
+});
 
 
 app.listen(

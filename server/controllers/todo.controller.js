@@ -10,7 +10,7 @@ export async function getTodos(req,res){
         
         return res.status(200).json(response.rows)
     } catch (error) {
-        console.error(error);
+        console.error(error.message);
         return res.status(500).json({ message: 'Failed to fetch todos' });
     } 
 }
@@ -32,7 +32,7 @@ export async function addTodo(req,res){
         return res.status(201).json(result.rows[0])
 
     } catch (error) {
-        console.error(error);
+        console.error(error.message);
         return res.status(500).json({ message: error.message });
     }
 }
@@ -62,7 +62,7 @@ export async function deleteTodo(req, res) {
 
     return res.status(200).json({message:'todos were deleted successfully'})
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
     return res.status(500).json({
       message: error.message,
     });
