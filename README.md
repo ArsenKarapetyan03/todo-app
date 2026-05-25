@@ -135,6 +135,7 @@ npm start
 
 ![Login](./screenshots/login.png)
 ![Todos](./screenshots/todos.png)
+![Register](./screenshots/register.png)
 
 ---
 
