@@ -8,8 +8,7 @@ export async function registerUser({ name, email, password }) {
     const data = await response.json();
     
     if (!response.ok) {
-        alert(data.message || "Registration failed")
-        throw new Error(data.message || "Registration failed");
+        throw new Error("Registration failed  " + data.message);
     }
     
     return data;
@@ -24,8 +23,7 @@ export async function loginUser({ name, email, password }) {
     const data = await response.json();
     
     if (!response.ok) {
-        alert(data.message || "Login failed")
-        throw new Error(data.message || "Login failed");
+        throw new Error("Login failed  " + data.message);
     }
     
     return data;

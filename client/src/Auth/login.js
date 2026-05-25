@@ -21,7 +21,7 @@ export default function Login(){
             navigate("/todos");
 
         } catch (err) {
-            alert(err.message);
+            alert(err.message || "Login failed");
         }
     }
 

@@ -22,7 +22,7 @@ export default function Register() {
             navigate("/todos");
 
         } catch (err) {
-            alert(err.message);
+            alert(err.message || "Registration failed");
         }
     }
 
