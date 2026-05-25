@@ -6,6 +6,12 @@ The application allows users to register, log in securely, and manage personal t
 
 ---
 
+# Live Demo
+
+[View App](https://ak-todo-app.vercel.app)
+
+---
+
 # Features
 
 - User registration and login
@@ -220,12 +226,6 @@ DELETE /todos/delete
 - Refresh token authentication
 - Dark mode
 - User profile settings
-
----
-
-# Live Demo
-
-[View App](https://ak-todo-app.vercel.app)
 
 ---
 
