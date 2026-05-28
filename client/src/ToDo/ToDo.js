@@ -44,13 +44,13 @@ export default function Todo() {
       <ul className="todos">
         {todos.map(todo => (
           <li key={todo.id} className="todo">
-            <span>{todo.title}</span>
             <input
               className="todoCheckbox"
               type="checkbox"
               checked={todo.completed}
               onChange={e => toggle(todo.id, e.target.checked)}
             />
+            <span>{todo.title}</span>
           </li>
         ))}
       </ul>

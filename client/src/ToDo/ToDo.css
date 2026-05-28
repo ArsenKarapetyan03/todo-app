@@ -89,18 +89,23 @@ body {
     transform: translateY(-1px);
     box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
 }
-
-.todoCheckbox {
-    width: 20px;
-    height: 20px;
-    accent-color: #7c3aed;
+.todo input:checked + span {
+    text-decoration: line-through;
+    color: #6b7280;
+}
+.todo .todoCheckbox {
+        width: 20px;
+        height: 20px;
+        accent-color: #7c3aed;
+        order: 2;
 }
 
 .todo span {
-    flex: 1;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #0f172a;
+        order: 1;
+        flex: 1;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #0f172a;
 }
 
 p {
