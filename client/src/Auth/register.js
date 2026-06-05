@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {registerUser} from "./api/api.auth.js"
 import { useAuth } from "./context/AuthContext.js";
@@ -6,9 +7,11 @@ import "./authCSS/register.css"
 export default function Register() {
     const navigate = useNavigate();
     const {login} = useAuth()
+    const [loading, setLoading] = useState(false);
 
     async function handleRegister(e) {
         e.preventDefault();
+        setLoading(true);
         try {
             const formData = new FormData(e.target);
             const name = formData.get("name");
@@ -23,6 +26,8 @@ export default function Register() {
 
         } catch (err) {
             alert(err.message || "Registration failed");
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -44,7 +49,10 @@ export default function Register() {
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" id="password" autoComplete="new-password" required />
                 </div>
-                <button type="submit">Register</button>
+                <button type="submit" disabled={loading}>
+                    {loading ? "Creating account..." : "Register"}
+                </button>
+                {loading && <p className="loading-text">Connecting to server, please wait...</p>}
             </form>
             <div className="register-login-link">
                 <p>If already have an account</p>

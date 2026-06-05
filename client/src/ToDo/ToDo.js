@@ -42,8 +42,9 @@ export default function Todo() {
       </button>
 
       <ul className="todos">
-        {todos.map(todo => (
-          <li key={todo.id} className="todo">
+        {todos.sort((a, b) => a.completed - b.completed).map(todo => (
+          <li key={todo.id} className={`todo ${todo.completed ? 'completed-item' : ''}`}>
+            <span className={todo.completed ? 'completed' : ''}>{todo.title}</span>
             <input
               className="todoCheckbox"
               type="checkbox"

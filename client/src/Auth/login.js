@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {loginUser} from "./api/api.auth.js"
 import { useAuth } from "./context/AuthContext.js";
@@ -6,9 +7,11 @@ import "./authCSS/login.css"
 export default function Login(){
     const navigate = useNavigate()
     const {login} = useAuth()
+    const [loading, setLoading] = useState(false);
 
     async function handleLogin(e) {
         e.preventDefault();
+        setLoading(true);
         try {
             const formData = new FormData(e.target);
             const email = formData.get("email");
@@ -22,6 +25,8 @@ export default function Login(){
 
         } catch (err) {
             alert(err.message || "Login failed");
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -39,7 +44,10 @@ export default function Login(){
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" required autoComplete="current-password" />
             </div>
-            <button type="submit">Sign in</button>
+            <button type="submit" disabled={loading}>
+                {loading ? "Signing in..." : "Sign in"}
+            </button>
+            {loading && <p className="loading-text">Connecting to server, please wait...</p>}
         </form>
         <div className="login-register-link">
             <p>Dont you have an account?</p>
