@@ -41,16 +41,30 @@ export function useTodos() {
   const toggle = async (id, completed) => {
     const prev = [...todos]
 
-    setTodos(t =>
-      t.map(todo =>
-        todo.id === id ? { ...todo, completed} : todo
-      )
-    )
+    setTodos(current => {
+      let target
+
+      const remaining = current.map(todo => {
+        if (todo.id !== id) return todo
+
+        target = { ...todo, completed }
+        return target
+      })
+
+      if (!completed || !target) {
+        return remaining
+      }
+
+      return [
+        ...remaining.filter(todo => todo.id !== id),
+        target
+      ]
+    })
 
     try {
       await api.updateTodoStatus(id, completed)
     } catch (err) {
-      setTodos(prev) // rollback
+      setTodos(prev) ////rollback
       throw err
     }
   }
