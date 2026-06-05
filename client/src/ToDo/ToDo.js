@@ -51,7 +51,6 @@ export default function Todo() {
               checked={todo.completed}
               onChange={e => toggle(todo.id, e.target.checked)}
             />
-            <span>{todo.title}</span>
           </li>
         ))}
       </ul>
